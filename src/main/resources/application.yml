@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+    context-path: /oms #\u4E0A\u4E0B\u6587\u8DEF\u5F84
+
+
+#\u6570\u636E\u5E93\u4FE1\u606F
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: feiyu
+    url: jdbc:mysql://localhost:3306/oms?useSSL=false
+  mvc:
+    view:
+      prefix: /WEB-INF/page/
+      suffix: .jsp
+    #static-path-pattern: /static/**
+    hiddenmethod:
+      filter:
+        enabled: true
+
+#mybatis
+mybatis-plus:
+  type-aliases-package: com.dj.ssm.pojo
+  mapper-locations: mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+#\u6253\u65E5\u5FD7
+logging:
+  level:
+    com:
+      dj:
+        restful:
+          mapper: debug
+
+#\u5206\u9875
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
